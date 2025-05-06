@@ -1,10 +1,10 @@
-# Project Title
+# Analysis of Climate Change via Earth Surface Temperature
 
-Write a 1-2 sentences that quickly and clearly convey what your repo is for.
+This repository contains all the files and code used and/or needed for our final project for Stat 184.
 
 ## Overview
 
-Expand on those introductory sentences with a brief but informative description of your project's purpose and goals. This section should help visitors decide whether they should dig deeper into your repo/project.
+We were trying to identify the relationship between climate change the rise of city temperatures across the United States.
 
 ### Interesting Insight
 
