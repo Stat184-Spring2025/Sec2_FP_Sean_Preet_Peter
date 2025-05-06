@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Analysis of Climate Change via Earth Surface Temperature
 
 This repository contains all the files and code used and/or needed for our final project for Stat 184.
@@ -12,13 +17,17 @@ In our repo, you will find both the pdf and the qmd files of our final report, u
 
 ## Data Sources and Acknowledgements
 
-Our dataset, titled "Climate Change: Earth Surface Temperature Data", came from kaggle.com.
-link: https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data?resource=download
+Our data set, titled "Climate Change: Earth Surface Temperature Data", came from kaggle.com.
+
+link: <https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data?resource=download>
 
 ## Authors
 
 Sean Lydon - <sdl5402@psu.edu>
+
 Preet Lodha-Jain - <preetjain1506@gmail.com>
+
 Peter Kim - <ppk5368@psu.edu>
 
 If there are any questions, please feel free to contact one of the authors.
+
