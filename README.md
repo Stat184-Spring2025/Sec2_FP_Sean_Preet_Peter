@@ -6,18 +6,19 @@ This repository contains all the files and code used and/or needed for our final
 
 We were trying to identify the relationship between climate change the rise of city temperatures across the United States.
 
-### Interesting Insight
-
-This is optional but highly recommended. You'll include one interesting insight from your project as part of the README. This insight is most effective when you include a visual. Keep in mind that this visual must be included as an image file (e.g., JPG, PNG, etc.). You can export plots created with `{ggplot2}` by using the function `ggsave`.
-
 ## Repo Structure
 
-Use this section to explain the structure of your repo. This should help visitors quickly figure out where they should look to find certain elements. Further, you can use this space to highlight and briefly explain important/key files in the repo.
+In our repo, you will find both the pdf and the qmd files of our final report, under Project.pdf and Project.qmd. Any and all code we developed will be under the projectCode.R file, which we used to run our code before creating out final report. The current file, the README file, is a brief overview of the repo itself. The Project_Guidelines files is the guidelines we followed to complete this project.
 
 ## Data Sources and Acknowledgements
 
-Be sure to list where you got any data used within the project. Be sure to acknowledge any one whose work or elements you're drawing upon.
+Our dataset, titled "Climate Change: Earth Surface Temperature Data", came from kaggle.com.
+link: https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data?resource=download
 
 ## Authors
 
-Give information about who are the authors of the project and how people can get in touch if they have questions.
+Sean Lydon - <sdl5402@psu.edu>
+Preet Lodha-Jain - <preetjain1506@gmail.com>
+Peter Kim - <ppk5368@psu.edu>
+
+If there are any questions, please feel free to contact one of the authors.
