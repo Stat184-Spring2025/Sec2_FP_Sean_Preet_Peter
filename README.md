@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 # Analysis of Climate Change via Earth Surface Temperature
 
@@ -29,5 +29,5 @@ Preet Lodha-Jain - <preetjain1506@gmail.com>
 
 Peter Kim - <ppk5368@psu.edu>
 
-If there are any questions, please feel free to contact one of the authors.
+If there are any questions, please feel free to contact one of the authors, and we will get back to you.
 
