@@ -1,15 +1,14 @@
 #NY, SF, Houston, Phiily, Chicago, LA
 
 # Load required libraries
-library(tidyr)
 library(tidyverse)
-library(dplyr)
 library(lubridate)
-library(kableExtra)
 library(ggplot2)
+library(dplyr)
 
 # Load the dataset
-file_path <- "~/Downloads/archive (1)/GlobalLandTemperaturesByCity.csv"
+# Update the file path below to where you saved the CSV after downloading from Kaggle
+file_path <- "https://drive.google.com/file/d/1--o4KaqT3mGKubAn_BTnbNdibhVZdIaI/view?usp=drive_link"
 GlobalLandTemperaturesByCity <- read_csv(file_path)
 
 # Define the cities of interest
@@ -34,17 +33,28 @@ yearly_avg_temp <- majorCity_globalTemp %>%
 
 # Fancy plotting function
 plot_city_temp <- function(city_name) {
-  city_data <- filter(yearly_avg_temp, City == city_name)
+  city_data <- filter(yearly_avg_temp, City == city_name) %>%
+    arrange(Year) %>%
+    mutate(
+      RollingAvg = (AvgTemperatureF +
+                      lag(AvgTemperatureF, 1) +
+                      lag(AvgTemperatureF, 2) +
+                      lag(AvgTemperatureF, 3) +
+                      lag(AvgTemperatureF, 4)) / 5
+    )
   
-  ggplot(city_data, aes(x = Year, y = AvgTemperatureF)) +
-    geom_line(color = "#1f77b4", size = 1.1, alpha = 0.8) +
-    geom_smooth(method = "loess", color = "#ff7f0e", se = FALSE, size = 1.2) +
+  ggplot(city_data, aes(x = Year)) +
+    geom_line(aes(y = AvgTemperatureF, color = "Range of Temperatures"), size = 1.1, alpha = 0.8) +
+    geom_smooth(aes(y = AvgTemperatureF, color = "Average Temperature"), method = "loess", se = FALSE, size = 1.2) +
+    scale_color_manual(
+      name = "Legend",
+      values = c("Range of Temperatures" = "#1f77b4", "Average Temperature" = "#ff7f0e")
+    ) +
     labs(
       title = paste(city_name),
       subtitle = "Average Yearly Temperature (°F) from 1913 to Present",
       x = "Year",
-      y = "Avg Temperature (°F)",
-      caption = "Source: GlobalLandTemperaturesByCity.csv"
+      y = "Avg Temperature (°F)"
     ) +
     theme_minimal(base_family = "Arial") +
     theme(
@@ -52,6 +62,8 @@ plot_city_temp <- function(city_name) {
       plot.subtitle = element_text(size = 12, hjust = 0.5),
       axis.title = element_text(size = 11, face = "bold"),
       axis.text = element_text(color = "gray30"),
+      legend.title = element_text(face = "bold"),
+      legend.position = "bottom",
       panel.grid.minor = element_blank(),
       panel.grid.major = element_line(color = "gray80", linetype = "dotted"),
       plot.background = element_rect(fill = "#f9f9f9", color = NA),
@@ -63,6 +75,7 @@ plot_city_temp <- function(city_name) {
 for (city in target_cities) {
   print(plot_city_temp(city))
 }
+
 
 
 
