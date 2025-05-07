@@ -25,7 +25,7 @@ link: <https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surfac
 
 Sean Lydon - <sdl5402@psu.edu>
 
-Preet Lodha-Jain - <preetjain1506@gmail.com>
+Preet Lodha-Jain - <pal5438@psu.edu>
 
 Peter Kim - <ppk5368@psu.edu>
 
