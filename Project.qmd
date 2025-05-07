@@ -1,5 +1,32 @@
 ---
-title: "Final Project"
-format: pdf
+title: "Final Project: Historical Temperature Trends in Major US Cities"
+author: "Peter Kim, Preet Jain, Sean Lloyd"
+date: "`r Sys.Date()`"
+format: 
+  pdf:
+    toc: true
+    number-sections: true
+    fig-cap-location: bottom
+    fig-align: center
+    highlight-style: tango
+    keep-md: true
+editor: visual
+execute:
+  echo: true
+  message: false
+  warning: false
 ---
+
+## Introduction
+
+This report explores historical temperature trends in selected major U.S. cities from 1913 to the present. The data is derived from the [Global Land Temperatures by City](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data) dataset.
+
+## Libraries and Dataset Loading
+
+```{r}
+# Load required libraries
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(dplyr)
 
