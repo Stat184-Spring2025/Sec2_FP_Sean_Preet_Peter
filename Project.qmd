@@ -21,7 +21,7 @@ execute:
 
  We were trying to identify the relationship between climate change the rise of city temperatures across the United States.The data is derived from the [Global Land Temperatures by City](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data) dataset.
 
-## Libraries and Dataset Loading
+## Libraries and visualzation
 
 ```{r}
 # Load required libraries
