@@ -21,6 +21,10 @@ execute:
 
  We were trying to identify the relationship between climate change the rise of city temperatures across the United States.The data is derived from the [Global Land Temperatures by City](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data) dataset.
 
+## Narrative
+
+This study investigates the historical trends in temperature across selected major U.S. cities from 1913 to the present. By visualizing average annual temperatures, we aim to determine whether a significant warming trend exists in urban environments, possibly linked to broader climate change phenomena.
+
 ## Libraries and visualzation
 
 ```{r}
