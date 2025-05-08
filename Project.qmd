@@ -1,10 +1,9 @@
 ---
-<<<<<<< HEAD
 title: "Final Project"
 format: pdf
 author: Sean Lydon, Preet Lodha-Jain, Peter Kim
 bibliography: references.bib
-csl: mla-9th-edition.csl
+csl: MLA9.csl
 
 ---
 
@@ -15,7 +14,7 @@ We were trying to identify the relationship between climate change the rise of c
 
 ## Temperature Analysis of Major US Cities
 
-To visualize the temperature trends in major US cities over time, we analyzed the "Climate Change: Earth Surface Temperature Data" dataset. We focused on six major cities: New York, San Francisco, Los Angeles, Houston, Philadelphia, and Chicago. The analysis involved filtering the data for these cities within the United States, ensuring we had temperature readings from January 1, 1913, onwards. We then calculated the yearly average temperature in Fahrenheit for each city.
+To visualize the temperature trends in major US cities over time, we analyzed the "Climate Change: Earth Surface Temperature Data" dataset [@berkeleyearth2017]. We focused on six major cities: New York, San Francisco, Los Angeles, Houston, Philadelphia, and Chicago. The analysis involved filtering the data for these cities within the United States, ensuring we had temperature readings from January 1, 1913, onwards. We then calculated the yearly average temperature in Fahrenheit for each city.
 
 The following plots illustrate the average yearly temperature for each of the selected cities, along with a smoothed trend line to highlight the overall temperature progression.
 
@@ -42,39 +41,8 @@ We will focus on the averages over time of 6 cities across the US: Los Angeles, 
 The 6 graphs show the upward trend of average temperatures(F) of the 6 cities across the US from 1913 to 2013. The blue line shows the range of the temperatures when they were taken (twice a year, 6 months apart), and the orange line shows the overall average temperature. Overall, we can see a gradual increase in temperatures over time, which can be caused by climate change, but as these cities grew over this time period, we cannot accurately calculate how much climate change played a role in these changes.
 
 
-```{r codeAppend, ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
-=======
-title: "Final Project: Historical Temperature Trends in Major US Cities"
-author: "Peter Kim, Preet Jain, Sean Lydon"
-date: "`r Sys.Date()`"
-format: 
-  pdf:
-    toc: true
-    number-sections: true
-    fig-cap-location: bottom
-    fig-align: center
-    highlight-style: tango
-    keep-md: true
-editor: visual
-execute:
-  echo: true
-  message: false
-  warning: false
----
-
-## Introduction
-
- We were trying to identify the relationship between climate change the rise of city temperatures across the United States.The data is derived from the [Global Land Temperatures by City](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data) dataset.
-
-## Narrative
-
-This study investigates the historical trends in temperature across selected major U.S. cities from 1913 to the present. By visualizing average annual temperatures, we aim to determine whether a significant warming trend exists in urban environments, possibly linked to broader climate change phenomena.
-
-## Libraries and visualzation
-
-```{r}
->>>>>>> 19864c922c2ea61cd3daaf8a92586908015a20c4
 # Load required libraries
 library(tidyverse)
 library(lubridate)
@@ -82,13 +50,8 @@ library(ggplot2)
 library(dplyr)
 
 # Load the dataset
-<<<<<<< HEAD
 # The file is too big to link in the Git
 file_path <- "~/Downloads/archive/GlobalLandTemperaturesByCity.csv"
-=======
-# Update the file path below to where you saved the CSV after downloading from Kaggle
-file_path <- "https://drive.google.com/file/d/1--o4KaqT3mGKubAn_BTnbNdibhVZdIaI/view?usp=drive_link"
->>>>>>> 19864c922c2ea61cd3daaf8a92586908015a20c4
 GlobalLandTemperaturesByCity <- read_csv(file_path)
 
 # Define the cities of interest
@@ -136,7 +99,7 @@ plot_city_temp <- function(city_name) {
       x = "Year",
       y = "Avg Temperature (°F)"
     ) +
-    theme_minimal(base_family = "Arial") +
+    theme_minimal() +
     theme(
       plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
       plot.subtitle = element_text(size = 12, hjust = 0.5),
@@ -155,8 +118,83 @@ plot_city_temp <- function(city_name) {
 for (city in target_cities) {
   print(plot_city_temp(city))
 }
-<<<<<<< HEAD
 ```
-=======
-'''
->>>>>>> 19864c922c2ea61cd3daaf8a92586908015a20c4
+
+```{r codeAppend, ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
+
+# Load required libraries
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(dplyr)
+
+# Load the dataset
+# The file is too big to link in the Git
+file_path <- "~/Downloads/archive/GlobalLandTemperaturesByCity.csv"
+GlobalLandTemperaturesByCity <- read_csv(file_path)
+
+# Define the cities of interest
+target_cities <- c("New York", "San Francisco", "Los Angeles", 
+                   "Houston", "Philadelphia", "Chicago")
+
+# Filter and preprocess the data
+majorCity_globalTemp <- GlobalLandTemperaturesByCity %>%
+  filter(City %in% target_cities,
+         Country == "United States",
+         !is.na(AverageTemperature),
+         dt >= as.Date("1913-01-01")) %>%
+  mutate(
+    Year = year(dt),
+    AverageTemperatureF = (AverageTemperature * 9/5) + 32
+  )
+
+# Compute yearly average temperature
+yearly_avg_temp <- majorCity_globalTemp %>%
+  group_by(City, Year) %>%
+  summarize(AvgTemperatureF = mean(AverageTemperatureF, na.rm = TRUE), .groups = 'drop')
+
+# Fancy plotting function
+plot_city_temp <- function(city_name) {
+  city_data <- filter(yearly_avg_temp, City == city_name) %>%
+    arrange(Year) %>%
+    mutate(
+      RollingAvg = (AvgTemperatureF +
+                      lag(AvgTemperatureF, 1) +
+                      lag(AvgTemperatureF, 2) +
+                      lag(AvgTemperatureF, 3) +
+                      lag(AvgTemperatureF, 4)) / 5
+    )
+  
+  ggplot(city_data, aes(x = Year)) +
+    geom_line(aes(y = AvgTemperatureF, color = "Range of Temperatures"), size = 1.1, alpha = 0.8) +
+    geom_smooth(aes(y = AvgTemperatureF, color = "Average Temperature"), method = "loess", se = FALSE, size = 1.2) +
+    scale_color_manual(
+      name = "Legend",
+      values = c("Range of Temperatures" = "#1f77b4", "Average Temperature" = "#ff7f0e")
+    ) +
+    labs(
+      title = paste(city_name),
+      subtitle = "Average Yearly Temperature (°F) from 1913 to Present",
+      x = "Year",
+      y = "Avg Temperature (°F)"
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(size = 12, hjust = 0.5),
+      axis.title = element_text(size = 11, face = "bold"),
+      axis.text = element_text(color = "gray30"),
+      legend.title = element_text(face = "bold"),
+      legend.position = "bottom",
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(color = "gray80", linetype = "dotted"),
+      plot.background = element_rect(fill = "#f9f9f9", color = NA),
+      panel.background = element_rect(fill = "#f9f9f9", color = NA)
+    )
+}
+
+# Display plots one after another
+for (city in target_cities) {
+  print(plot_city_temp(city))
+}
+```
