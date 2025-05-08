@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: "Final Project"
 format: pdf
 author: Sean Lydon, Preet Lodha-Jain, Peter Kim
@@ -43,6 +44,37 @@ The 6 graphs show the upward trend of average temperatures(F) of the 6 cities ac
 
 ```{r codeAppend, ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
 
+=======
+title: "Final Project: Historical Temperature Trends in Major US Cities"
+author: "Peter Kim, Preet Jain, Sean Lydon"
+date: "`r Sys.Date()`"
+format: 
+  pdf:
+    toc: true
+    number-sections: true
+    fig-cap-location: bottom
+    fig-align: center
+    highlight-style: tango
+    keep-md: true
+editor: visual
+execute:
+  echo: true
+  message: false
+  warning: false
+---
+
+## Introduction
+
+ We were trying to identify the relationship between climate change the rise of city temperatures across the United States.The data is derived from the [Global Land Temperatures by City](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data) dataset.
+
+## Narrative
+
+This study investigates the historical trends in temperature across selected major U.S. cities from 1913 to the present. By visualizing average annual temperatures, we aim to determine whether a significant warming trend exists in urban environments, possibly linked to broader climate change phenomena.
+
+## Libraries and visualzation
+
+```{r}
+>>>>>>> 19864c922c2ea61cd3daaf8a92586908015a20c4
 # Load required libraries
 library(tidyverse)
 library(lubridate)
@@ -50,8 +82,13 @@ library(ggplot2)
 library(dplyr)
 
 # Load the dataset
+<<<<<<< HEAD
 # The file is too big to link in the Git
 file_path <- "~/Downloads/archive/GlobalLandTemperaturesByCity.csv"
+=======
+# Update the file path below to where you saved the CSV after downloading from Kaggle
+file_path <- "https://drive.google.com/file/d/1--o4KaqT3mGKubAn_BTnbNdibhVZdIaI/view?usp=drive_link"
+>>>>>>> 19864c922c2ea61cd3daaf8a92586908015a20c4
 GlobalLandTemperaturesByCity <- read_csv(file_path)
 
 # Define the cities of interest
@@ -118,4 +155,8 @@ plot_city_temp <- function(city_name) {
 for (city in target_cities) {
   print(plot_city_temp(city))
 }
+<<<<<<< HEAD
 ```
+=======
+'''
+>>>>>>> 19864c922c2ea61cd3daaf8a92586908015a20c4
