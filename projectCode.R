@@ -8,8 +8,7 @@ library(dplyr)
 
 # Load the dataset
 # Update the file path below to where you saved the CSV after downloading from Kaggle
-file_path <- "https://drive.google.com/file/d/1--o4KaqT3mGKubAn_BTnbNdibhVZdIaI/view?usp=drive_link"
-GlobalLandTemperaturesByCity <- read_csv(file_path)
+GlobalLandTemperaturesByCity <- majorCity_globalTemp
 
 # Define the cities of interest
 target_cities <- c("New York", "San Francisco", "Los Angeles", 
